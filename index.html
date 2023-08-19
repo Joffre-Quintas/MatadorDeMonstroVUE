@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matador de Monstros Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="display confronto">
+            <div>
+                <h3>{{ player1.nome}}</h3>
+                <div class="vidaTotal">
+                    <div class="vidaRestante" :style="{ width: (player1.vidaRestante/player1.vidaTotal)*100 + '%'}"></div>
+                </div>
+                <p>{{ Math.floor((player1.vidaRestante/player1.vidaTotal)*100) + '%' }}</p>
+            </div>
+            <div>X</div>
+            <div>
+                <h3>{{ monstro.nome }}</h3>
+                <div class="vidaTotal">
+                    <div class="vidaRestante" :style="{ width: (monstro.vidaRestante/monstro.vidaTotal)*100 + '%'}"></div>
+                </div>
+                <p>{{ Math.floor((monstro.vidaRestante/monstro.vidaTotal)*100) + '%' }}</p>
+            </div>
+        </div>
+        <div class="display acoes">
+            <button v-if="!gameOn && !vencedor" @click="iniciarGame">Iniciar Jogo</button>
+            <div v-else-if="gameOn && vencedor">
+                <p>Vencedor: {{ vencedor }}</p>
+                <button @click="restart">Lutar novamente</button>
+            </div>
+            <div v-else="gameOn">
+                <button 
+                    v-for="botao in botoesAcao" 
+                    :style="{backgroundColor: botao.cor}"
+                    @click="botao.acao"
+                    >{{ botao.nome }}
+                </button>
+                
+            </div>
+        </div>
+        <div class=" display boxLog" v-show="logs.length != 0">
+            <p class="boxLog_log" v-for="(log,indice) in logs">{{ log }}</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
