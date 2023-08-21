@@ -13,7 +13,9 @@
             <div>
                 <h3>{{ player1.nome}}</h3>
                 <div class="vidaTotal">
-                    <div class="vidaRestante" :style="{ width: (player1.vidaRestante/player1.vidaTotal)*100 + '%'}"></div>
+                    <div class="vidaRestante" 
+                        :class="{danger: player1.vidaRestante < 40}" 
+                        :style="{ width: (player1.vidaRestante/player1.vidaTotal)*100 + '%'}"></div>
                 </div>
                 <p>{{ Math.floor((player1.vidaRestante/player1.vidaTotal)*100) + '%' }}</p>
             </div>
@@ -21,7 +23,9 @@
             <div>
                 <h3>{{ monstro.nome }}</h3>
                 <div class="vidaTotal">
-                    <div class="vidaRestante" :style="{ width: (monstro.vidaRestante/monstro.vidaTotal)*100 + '%'}"></div>
+                    <div class="vidaRestante"
+                        :class="{danger: player1.vidaRestante < 40}"
+                        :style="{ width: (monstro.vidaRestante/monstro.vidaTotal)*100 + '%'}"></div>
                 </div>
                 <p>{{ Math.floor((monstro.vidaRestante/monstro.vidaTotal)*100) + '%' }}</p>
             </div>

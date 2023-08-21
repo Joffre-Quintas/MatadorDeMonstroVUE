@@ -73,4 +73,9 @@ button:hover {
 .boxLog_log:nth-child(odd) {
     background-color: red;
 }
-
+.danger {
+    background-color: orange;
+}
+.critial {
+    background-color: red;
+}
