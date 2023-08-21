@@ -48,7 +48,9 @@ new Vue({
         curar() {
             const danoMonstro = Math.floor(Math.random()*4) + this.monstro.ataque
             const curaPlayer = Math.floor(Math.random()*4) + this.player1.cura
-            this.player1.vidaRestante += curaPlayer
+            if(this.player1.vidaRestante + curaPlayer <= this.player1.vidaTotal) {
+                this.player1.vidaRestante += curaPlayer
+            }
             this.player1.vidaRestante -= danoMonstro
             this.logs.push(this.mensagemLog(this.monstro.nome, 'causou dano', danoMonstro))
             this.logs.push(this.mensagemLog(this.player1.nome, 'curou', curaPlayer))
